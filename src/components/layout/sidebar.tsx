@@ -64,7 +64,7 @@ const navItems: NavItem[] = [
   },
   { label: "Groups", href: "/groups", icon: GroupsIcon },
   { label: "Businesses", href: "/businesses", icon: BusinessIcon },
-  { label: "Ads", href: "/ads", icon: StarIcon },
+  // { label: "Ads", href: "/ads", icon: StarIcon },
   // { label: "Broadcast", href: "/broadcast", icon: MailIcon },
   { label: "Audit Logs", href: "/audit", icon: ClockIcon },
 ];
