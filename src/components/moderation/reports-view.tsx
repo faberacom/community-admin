@@ -24,6 +24,7 @@ const TARGET_TYPE_OPTIONS = [
   { value: "USER", label: "User" },
   { value: "BUSINESS", label: "Business" },
   { value: "GROUP", label: "Group" },
+  { value: "EVENT", label: "Event" },
 ];
 
 const REASON_OPTIONS = [

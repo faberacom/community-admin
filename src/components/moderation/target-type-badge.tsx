@@ -6,6 +6,7 @@ const styles: Record<TargetType, string> = {
   USER: "bg-purple-100 text-purple-700",
   BUSINESS: "bg-teal-100 text-teal-700",
   GROUP: "bg-amber-100 text-amber-700",
+  EVENT: "bg-green-100 text-green-700",
 };
 
 export function TargetTypeBadge({ type }: { type: TargetType }) {

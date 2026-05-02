@@ -10,6 +10,7 @@ const actionLabels: Record<ModerationActionType, string> = {
   WARN: "Warn User",
   DELETE_POST: "Delete Post",
   DELETE_COMMENT: "Delete Comment",
+  DELETE_EVENT: "Delete Event",
   BAN_USER: "Ban User",
   FEATURE_BUSINESS: "Feature Business",
   UNFEATURE_BUSINESS: "Unfeature Business",
@@ -19,6 +20,7 @@ const actionVariants: Record<ModerationActionType, "danger" | "outline"> = {
   WARN: "outline",
   DELETE_POST: "danger",
   DELETE_COMMENT: "danger",
+  DELETE_EVENT: "danger",
   BAN_USER: "danger",
   FEATURE_BUSINESS: "outline",
   UNFEATURE_BUSINESS: "outline",
@@ -75,6 +77,8 @@ export function ActionModal({
             "This will permanently delete the reported comment."}
           {actionType === "WARN" &&
             "This will send a warning to the content author. The report will be marked as resolved."}
+          {actionType === "DELETE_EVENT" &&
+            "This will soft-delete the reported event. The report will be marked as resolved."}
           {actionType === "FEATURE_BUSINESS" &&
             "This will feature the business. The report will be marked as resolved."}
           {actionType === "UNFEATURE_BUSINESS" &&

@@ -14,6 +14,7 @@ import MailIcon from "@/public/icons/mail-icon.svg";
 import ClockIcon from "@/public/icons/clock-icon.svg";
 import SettingsIcon from "@/public/icons/settings-icon.svg";
 import StarIcon from "@/public/icons/star-icon.svg";
+import EventIcon from "@/public/icons/event.svg";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -64,6 +65,7 @@ const navItems: NavItem[] = [
   },
   { label: "Groups", href: "/groups", icon: GroupsIcon },
   { label: "Businesses", href: "/businesses", icon: BusinessIcon },
+  { label: "Events", href: "/events", icon: EventIcon },
   // { label: "Ads", href: "/ads", icon: StarIcon },
   // { label: "Broadcast", href: "/broadcast", icon: MailIcon },
   { label: "Audit Logs", href: "/audit", icon: ClockIcon },

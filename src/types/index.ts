@@ -7,3 +7,4 @@ export * from "./content";
 export * from "./groups";
 export * from "./businesses";
 export * from "./audit";
+export * from "./events";

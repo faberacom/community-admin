@@ -1,7 +1,7 @@
 import { PaginatedResponse } from "./api";
 
 export type ReportStatus = "OPEN" | "UNDER_REVIEW" | "RESOLVED" | "DISMISSED";
-export type TargetType = "POST" | "COMMENT" | "USER" | "BUSINESS" | "GROUP";
+export type TargetType = "POST" | "COMMENT" | "USER" | "BUSINESS" | "GROUP" | "EVENT";
 export type ReportReason =
   | "SPAM"
   | "HARASSMENT"
@@ -12,6 +12,7 @@ export type ModerationActionType =
   | "WARN"
   | "DELETE_POST"
   | "DELETE_COMMENT"
+  | "DELETE_EVENT"
   | "BAN_USER"
   | "FEATURE_BUSINESS"
   | "UNFEATURE_BUSINESS";

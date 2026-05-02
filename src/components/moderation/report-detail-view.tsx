@@ -9,6 +9,7 @@ import {
   ModerationActionType,
   TargetType,
 } from "@/src/types";
+import Link from "next/link";
 import { Button } from "@/src/components/ui/button";
 import { ConfirmModal } from "@/src/components/ui/confirm-modal";
 import { formatDate, formatDateTime } from "@/src/utils/date";
@@ -28,25 +29,47 @@ const actionLabels: Record<ModerationActionType, string> = {
   WARN: "Warn User",
   DELETE_POST: "Delete Post",
   DELETE_COMMENT: "Delete Comment",
+  DELETE_EVENT: "Delete Event",
   BAN_USER: "Ban User",
   FEATURE_BUSINESS: "Feature Business",
   UNFEATURE_BUSINESS: "Unfeature Business",
 };
 
-function getActionsForTargetType(targetType: TargetType): ModerationActionType[] {
+function getActionsForTargetType(
+  targetType: TargetType,
+): ModerationActionType[] {
   switch (targetType) {
     case "POST":
-      return ["DELETE_POST", "WARN"];
+      return ["DELETE_POST"];
     case "COMMENT":
-      return ["DELETE_COMMENT", "WARN"];
+      return ["DELETE_COMMENT"];
     case "USER":
-      return ["BAN_USER", "WARN"];
+      return ["BAN_USER"];
     case "BUSINESS":
       return ["FEATURE_BUSINESS", "UNFEATURE_BUSINESS"];
     case "GROUP":
       return [];
+    case "EVENT":
+      return ["DELETE_EVENT"];
   }
 }
+
+// function getActionsForTargetType(targetType: TargetType): ModerationActionType[] {
+//   switch (targetType) {
+//     case "POST":
+//       return ["DELETE_POST", "WARN"];
+//     case "COMMENT":
+//       return ["DELETE_COMMENT", "WARN"];
+//     case "USER":
+//       return ["BAN_USER", "WARN"];
+//     case "BUSINESS":
+//       return ["FEATURE_BUSINESS", "UNFEATURE_BUSINESS"];
+//     case "GROUP":
+//       return [];
+//     case "EVENT":
+//       return ["DELETE_EVENT", "WARN"];
+//   }
+// }
 
 interface TargetContentProps {
   targetType: TargetType;
@@ -62,7 +85,10 @@ function TargetContent({ targetType, target }: TargetContentProps) {
     );
   }
 
-  const data = target as Record<string, string | boolean | Record<string, string>>;
+  const data = target as Record<
+    string,
+    string | boolean | Record<string, string>
+  >;
 
   if (targetType === "POST") {
     return (
@@ -155,6 +181,36 @@ function TargetContent({ targetType, target }: TargetContentProps) {
     );
   }
 
+  if (targetType === "EVENT") {
+    return (
+      <div className="space-y-1">
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className="text-sm font-medium text-gray-800">
+            {String(data.title ?? "—")}
+          </p>
+          {data.is_deleted && (
+            <span className="text-xs font-semibold bg-red-100 text-red-600 px-1.5 py-0.5 rounded">
+              Deleted
+            </span>
+          )}
+        </div>
+        {data.start_time && (
+          <p className="text-xs text-gray-400">
+            Starts: {formatDate(String(data.start_time))}
+          </p>
+        )}
+        {data.id && !data.is_deleted && (
+          <Link
+            href={`/events/${String(data.id)}`}
+            className="text-xs text-primary hover:underline"
+          >
+            View event →
+          </Link>
+        )}
+      </div>
+    );
+  }
+
   return null;
 }
 
@@ -165,7 +221,8 @@ interface ReportDetailViewProps {
 export function ReportDetailView({ reportId }: ReportDetailViewProps) {
   const [report, setReport] = useState<Report | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [pendingAction, setPendingAction] = useState<ModerationActionType | null>(null);
+  const [pendingAction, setPendingAction] =
+    useState<ModerationActionType | null>(null);
   const [showDismiss, setShowDismiss] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
@@ -261,7 +318,10 @@ export function ReportDetailView({ reportId }: ReportDetailViewProps) {
           Reported Content
         </h3>
         <div className="bg-white rounded-2xl border border-gray-100 p-5">
-          <TargetContent targetType={report.targetType} target={report.target} />
+          <TargetContent
+            targetType={report.targetType}
+            target={report.target}
+          />
         </div>
       </div>
 
@@ -279,7 +339,8 @@ export function ReportDetailView({ reportId }: ReportDetailViewProps) {
                   variant={
                     action === "BAN_USER" ||
                     action === "DELETE_POST" ||
-                    action === "DELETE_COMMENT"
+                    action === "DELETE_COMMENT" ||
+                    action === "DELETE_EVENT"
                       ? "danger"
                       : "outline"
                   }
