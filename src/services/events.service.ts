@@ -1,5 +1,9 @@
 import { apiClient } from "@/src/lib/api-client";
-import { AdminEventItem, AdminEventDetail, AdminEventListResponse, EventsQuery } from "@/src/types";
+import {
+  AdminEventDetail,
+  AdminEventListResponse,
+  EventsQuery,
+} from "@/src/types";
 
 export const eventsService = {
   async list(params: EventsQuery = {}): Promise<AdminEventListResponse> {

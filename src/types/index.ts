@@ -8,3 +8,5 @@ export * from "./groups";
 export * from "./businesses";
 export * from "./audit";
 export * from "./events";
+export * from "./verifications";
+export * from "./ads";
