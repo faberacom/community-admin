@@ -19,7 +19,12 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const { user, setUser, setIsLoadingState, logout: clearAuth } = useAuthStore();
+  const {
+    user,
+    setUser,
+    setIsLoadingState,
+    logout: clearAuth,
+  } = useAuthStore();
 
   useEffect(() => {
     const initializeAuth = async () => {
@@ -50,12 +55,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const logout = async () => {
-    try {
-      await authService.logout();
-    } finally {
-      removeAuthTokens();
-      clearAuth();
-    }
+    removeAuthTokens();
+    clearAuth();
   };
 
   return (

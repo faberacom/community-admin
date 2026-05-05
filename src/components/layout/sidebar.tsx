@@ -50,7 +50,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "Users", href: "/analytics/users" },
       { label: "Content", href: "/analytics/content" },
-      // { label: "Revenue", href: "/analytics/revenue" },
+      { label: "Revenue", href: "/analytics/revenue" },
     ],
   },
   { label: "Users", href: "/users", icon: PeopleIcon },

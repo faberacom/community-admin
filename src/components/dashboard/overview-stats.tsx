@@ -176,14 +176,14 @@ export function OverviewStatsGrid() {
                 : undefined
             }
           />
-          {/* <StatCard
+          <StatCard
             label="Revenue"
             value={revenueValue}
             subText="Total completed payments"
             icon={<StarIcon className="w-5 h-5 text-yellow-600" />}
             iconBg="bg-yellow-50"
             href="/analytics/revenue"
-          /> */}
+          />
         </div>
       </section>
     </div>
