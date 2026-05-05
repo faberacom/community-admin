@@ -3,7 +3,12 @@ import {
   setAuthTokens,
   removeAuthTokens,
 } from "@/src/lib/api-client";
-import { AuthResponse, LoginCredentials, AdminUser, isAdmin } from "@/src/types";
+import {
+  AuthResponse,
+  LoginCredentials,
+  AdminUser,
+  isAdmin,
+} from "@/src/types";
 
 export const authService = {
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
@@ -22,13 +27,13 @@ export const authService = {
     return response.data;
   },
 
-  async logout(): Promise<void> {
-    try {
-      await apiClient.post("/auth/logout");
-    } finally {
-      removeAuthTokens();
-    }
-  },
+  // async logout(): Promise<void> {
+  //   try {
+  //     await apiClient.post("/auth/logout");
+  //   } finally {
+  //     removeAuthTokens();
+  //   }
+  // },
 
   async getCurrentUser(): Promise<AdminUser> {
     const response = await apiClient.get<AdminUser>("/users/me");
