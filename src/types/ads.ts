@@ -1,5 +1,4 @@
-export type AdPlacement = "SIDEBAR" | "TOP_BANNER";
-//  | "FEED"
+export type AdPlacement = "SIDEBAR" | "TOP_BANNER" | "FEED";
 //   | "FOOTER";
 export type AdSource = "ADMIN" | "USER";
 export type AdStatus =
@@ -60,7 +59,7 @@ export interface AdsQuery {
 export const AD_PLACEMENT_LABELS: Record<AdPlacement, string> = {
   SIDEBAR: "Side Banner",
   TOP_BANNER: "Top Banner",
-  // FEED: "Feed",
+  FEED: "Feed",
   // FOOTER: "Footer",
 };
 
