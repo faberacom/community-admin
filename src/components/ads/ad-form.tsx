@@ -17,14 +17,14 @@ import { getMediaUrl } from "@/src/utils/functions";
 const PLACEMENT_ASPECT_RATIOS: Record<AdPlacement, number> = {
   SIDEBAR: 1, // 1:1 square
   TOP_BANNER: 4, // 4:1 wide horizontal banner
-  // FEED: 1,          // 1:1 square
+  FEED: 1, // 1:1 square
   // FOOTER: 6,        // 6:1 wide footer banner
 };
 
 const PLACEMENT_CROP_HINTS: Record<AdPlacement, string> = {
   SIDEBAR: "Square image (1:1)",
   TOP_BANNER: "Wide horizontal banner (4:1)",
-  // FEED: "Square image (1:1)",
+  FEED: "Square image (1:1)",
   // FOOTER: "Wide banner (6:1)",
 };
 
